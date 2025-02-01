@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881963733279",
+    "project_id": "easytalk-fcc5e",
+    "storage_bucket": "easytalk-fcc5e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881963733279:android:8d89f4c86a691b4417e02a",
+        "android_client_info": {
+          "package_name": "com.example.easy_talk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZFtI7peK0iPoAti9sTm-EsBtjotTiKCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
