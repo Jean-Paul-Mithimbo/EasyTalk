@@ -1,74 +1,28 @@
-# # Miscellaneous
-# *.class
-# *.log
-# *.pyc
-# *.swp
-# .DS_Store
-# .atom/
-# .build/
-# .buildlog/
-# .history
-# .svn/
-# .swiftpm/
-# migrate_working_dir/
-
-# # IntelliJ related
-# *.iml
-# *.ipr
-# *.iws
-# .idea/
-
-# # The .vscode folder contains launch configuration and tasks you configure in
-# # VS Code which you may wish to be included in version control, so this line
-# # is commented out by default.
-# #.vscode/
-
-# # Flutter/Dart/Pub related
-# **/doc/api/
-# **/ios/Flutter/.last_build_id
-# .dart_tool/
-# .flutter-plugins
-# .flutter-plugins-dependencies
-# .pub-cache/
-# .pub/
-# /build/
-
-# # Symbolication related
-# app.*.symbols
-
-# # Obfuscation related
-# app.*.map.json
-
-# # Android Studio will place build artifacts here
-# /android/app/debug
-# /android/app/profile
-# /android/app/release
-
-
-
-# Flutter/Dart specific
+# --- FLUTTER/DART ---
 .dart_tool/
 .build/
 .packages
 .flutter-plugins
 .flutter-plugins-dependencies
-.pub-cache/
 pubspec.lock
+pubspec_overrides.yaml
 
-# IDEs & Editors
+# --- IDEs & EDITORS ---
 .idea/
 .vscode/
 *.iml
 
-# Android
+# --- ANDROID ---
 android/.gradle/
-android/app/build/
 android/.cxx/
+android/.idea/
+android/app/build/
 android/local.properties
 android/keystore.properties
 android/key.properties
+android/key.jks
 
-# iOS
+# --- iOS ---
 ios/Pods/
 ios/.symlinks/
 ios/Flutter/Flutter.podspec
@@ -81,31 +35,33 @@ ios/Runner.xcworkspace/
 ios/Runner.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
 
-# Web
+# --- WEB ---
 web/.dart_tool/
 web/.firebase/
 
-# Linux
+# --- LINUX ---
 linux/flutter/
 linux/.dart_tool/
 linux/build/
 
-# Windows
+# --- WINDOWS ---
 windows/flutter/
 windows/.dart_tool/
 windows/build/
 
-# macOS
+# --- macOS ---
 macos/.dart_tool/
 macos/build/
 macos/Flutter/ephemeral/
 
-# Firebase
+# --- FIREBASE & CONFIGURATION SENSIBLE ---
 firebase.json
 **/google-services.json
 **/GoogleService-Info.plist
+**/serviceAccountKey.json
+**/firebase_options.dart
 
-# Logs & System files
+# --- LOGS & SYSTEM FILES ---
 *.log
 *.DS_Store
 *.lock
@@ -116,10 +72,25 @@ firebase.json
 *.swo
 *.swn
 *.bak
+*.tmp
+*.old
 
-# Coverage & Testing
+# --- COVERAGE & TESTING ---
 coverage/
 coverage.lcov
 
-# Custom environment variables
+# --- CUSTOM ENVIRONMENT VARIABLES ---
 .env
+.env.*
+*.secret
+
+# --- STATE & CACHE ---
+.dart_tool/
+.build/
+.codemagic/
+.melos_tool/
+
+# --- FLUTTER BUILD OUTPUT ---
+/build/
+/out/
+/dist/
