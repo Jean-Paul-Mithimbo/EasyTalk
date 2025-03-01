@@ -1,5 +1,5 @@
-import 'package:easy_talk/auth/auth_gate.dart';
-import 'package:easy_talk/auth/login_or_register.dart';
+import 'package:easy_talk/services/auth/auth_gate.dart';
+import 'package:easy_talk/services/auth/login_or_register.dart';
 import 'package:easy_talk/firebase_options.dart';
 import 'package:easy_talk/themes/light_mode.dart';
 import 'package:firebase_core/firebase_core.dart';

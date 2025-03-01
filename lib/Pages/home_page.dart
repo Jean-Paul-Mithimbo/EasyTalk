@@ -1,15 +1,44 @@
+import 'package:easy_talk/services/auth/auth_service.dart';
+import 'package:easy_talk/components/my_drawer.dart';
+import 'package:easy_talk/services/chat/chat_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+//  chat & auth services
+  final AuthService _authService = AuthService();
+  final ChatService _chatService = ChatService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
       ),
+      drawer: const MyDrawer(),
+      body: _buildUserList(),
     );
+
+    // build a list of users for the current logged in user
+    Widget _buildUserList() {
+      return StreamBuilder( 
+          stream: _chatService.getUsersStream(),
+          builder: (context, snapshop) {
+            // error 
+            if(snapshop.hasErrror){
+              return const Text('Error');
+            }
+            //loading  
+            if (snapshop.connectionState==ConnectionState.waiting){
+              return const Text('Loading..')
+            }
+            // return List view
+            return ListView(
+              children: snapshop.data!.map<Widget>((userData)=>_buidListItem).toList(),
+            );
+          });
+    }
   }
 }

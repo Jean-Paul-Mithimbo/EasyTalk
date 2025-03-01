@@ -1,3 +1,4 @@
+import 'package:easy_talk/services/auth/auth_service.dart';
 import 'package:easy_talk/components/my_button.dart';
 import 'package:easy_talk/components/my_textfiel.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,35 @@ class RegisterPage extends StatelessWidget {
 
   final void Function()? onTap;
   // ignore: use_key_in_widget_constructors
-  RegisterPage({super.key,required this.onTap});
-  // register methode
-  void register() {}
+  RegisterPage({super.key, required this.onTap});
+    // register methode
+  void register(BuildContext context) {
+    //get auth services
+    final _auth = AuthService();
+
+    if (_pwController.text == _confirmPwController.text) {
+      try {
+        _auth.SignUpWithEmailPassword(
+          _emailController.text,
+          _pwController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Passwords do not match"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +93,7 @@ class RegisterPage extends StatelessWidget {
             // Login button
             MyButton(
               text: "Register",
-              onTap: register,
+              onTap: () => register(context),
             ),
 
             SizedBox(height: 25),

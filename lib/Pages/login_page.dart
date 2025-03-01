@@ -1,4 +1,4 @@
-import 'package:easy_talk/auth/auth_service.dart';
+import 'package:easy_talk/services/auth/auth_service.dart';
 import 'package:easy_talk/components/my_button.dart';
 import 'package:easy_talk/components/my_textfiel.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
 
     //try login
     try {
-      await authService.SignInWithPassword(
+      await authService.SignInWithEmailPassword(
         _emailController.text,
         _pwController.text,
       );
