@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
           // return List view
           return ListView(
             children: snapshop.data!
-                .map<Widget>((userData) => _buidUserListItem(userData,context))
+                .map<Widget>((userData) => _buidUserListItem(userData, context))
                 .toList(),
           );
         });
@@ -50,19 +50,23 @@ class HomePage extends StatelessWidget {
   Widget _buidUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
     // display all users except current user
-    return UserTile(
-      text: userData["email"],
-      onTap: () {
-        // tapped on a user -> go to chat page
+    if (userData["email"] != _authService.getCurrentUser()!.email) {
+      return UserTile(
+        text: userData["email"],
+        onTap: () {
+          // tapped on a user -> go to chat page
 
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ChatPage(
-                receiverEmail: userData["email"],
-              ),
-            ));
-      },
-    );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatPage(
+                  receiverEmail: userData["email"],
+                ),
+              ));
+        },
+      );
+    }else{
+      return Container();
+    }
   }
 }
