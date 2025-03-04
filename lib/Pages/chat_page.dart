@@ -67,13 +67,14 @@ class ChatPage extends StatelessWidget {
         }
         // return list view
         return ListView(
-          children: snapshot.data!.docs!
+          children: snapshot.data!.docs
               .map((doc) => _buildMessageItem(doc))
               .toList(),
         );
       },
     );
   }
+
 
   // build message items
   Widget _buildMessageItem(DocumentSnapshot doc) {
