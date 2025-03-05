@@ -95,31 +95,42 @@ class ChatPage extends StatelessWidget {
     );
   }
 
-  // build message items
-  Widget _buildMessageItem(DocumentSnapshot doc) {
-    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    return Text(data['message']);
-  }
+  // // build message items
+  // Widget _buildMessageItem(DocumentSnapshot doc) {
+  //   Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+  //   return Text(data['message']);
+  // }
 
   // build message input
   Widget _buildUserInput() {
-    return Row(
-      children: [
-        // textfield should take up most of space
-        Expanded(
-          child: MyTextfiel(
-            controller: _messageController,
-            hintText: 'Type message',
-            obscureText: false,
+    return Padding(
+      padding: const EdgeInsets.only( bottom: 50.0),
+      child: Row(
+        children: [
+          // textfield should take up most of space
+          Expanded(
+            child: MyTextfiel(
+              controller: _messageController,
+              hintText: 'Type message',
+              obscureText: false,
+            ),
           ),
-        ),
-        // send bouton
-        IconButton(
-            onPressed: sendMessage,
-            icon: const Icon(
-              Icons.arrow_upward,
-            ))
-      ],
+          // send bouton
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+            ),
+            margin: const EdgeInsets.only(right: 25),
+            child: IconButton(
+                onPressed: sendMessage,
+                icon: const Icon(
+                  Icons.arrow_upward,
+                  color: Colors.white,
+                )),
+          )
+        ],
+      ),
     );
   }
 }
