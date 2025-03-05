@@ -29,7 +29,7 @@ class ChatPage extends StatelessWidget {
         _messageController.text,
       );
 
-      // clear textcontroller 
+      // clear textcontroller
     }
   }
 
@@ -52,6 +52,19 @@ class ChatPage extends StatelessWidget {
     );
   }
 
+  // build message item
+  Widget _buildMessageItem(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    // is current user
+    bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
+
+    // align message to the right if sender is the current user otherwise left
+    var alignment =
+        isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
+    return Text(data['message']);
+  }
+
+  // build message input
   Widget _buildMessageList() {
     String senderID = _authService.getCurrentUser()!.uid;
     return StreamBuilder(
@@ -67,14 +80,12 @@ class ChatPage extends StatelessWidget {
         }
         // return list view
         return ListView(
-          children: snapshot.data!.docs
-              .map((doc) => _buildMessageItem(doc))
-              .toList(),
+          children:
+              snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),
         );
       },
     );
   }
-
 
   // build message items
   Widget _buildMessageItem(DocumentSnapshot doc) {
