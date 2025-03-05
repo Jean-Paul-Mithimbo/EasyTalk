@@ -61,7 +61,15 @@ class ChatPage extends StatelessWidget {
     // align message to the right if sender is the current user otherwise left
     var alignment =
         isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
-    return Text(data['message']);
+    return Container(
+      alignment: alignment,
+      child: Column(
+        crossAxisAlignment: isCurrentUser? CrossAxisAlignment.end: CrossAxisAlignment.start,
+        children: [
+          Text(data['message']),
+        ],
+      )
+      );
   }
 
   // build message input
