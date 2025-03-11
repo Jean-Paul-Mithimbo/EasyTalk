@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_talk/components/chat_bubble.dart';
 import 'package:easy_talk/components/my_textfiel.dart';
 import 'package:easy_talk/services/auth/auth_service.dart';
 import 'package:easy_talk/services/chat/chat_service.dart';
@@ -62,14 +63,17 @@ class ChatPage extends StatelessWidget {
     var alignment =
         isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
     return Container(
-      alignment: alignment,
-      child: Column(
-        crossAxisAlignment: isCurrentUser? CrossAxisAlignment.end: CrossAxisAlignment.start,
-        children: [
-          Text(data['message']),
-        ],
-      )
-      );
+        alignment: alignment,
+        child: Column(
+          crossAxisAlignment:
+              isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: [
+            ChatBubble(
+              message: data['message'],
+              isCurrentUser: isCurrentUser,
+            )
+          ],
+        ));
   }
 
   // build message input
@@ -104,7 +108,7 @@ class ChatPage extends StatelessWidget {
   // build message input
   Widget _buildUserInput() {
     return Padding(
-      padding: const EdgeInsets.only( bottom: 50.0),
+      padding: const EdgeInsets.only(bottom: 50.0),
       child: Row(
         children: [
           // textfield should take up most of space
